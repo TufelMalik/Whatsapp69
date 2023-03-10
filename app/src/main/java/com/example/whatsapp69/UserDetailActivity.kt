@@ -51,10 +51,14 @@ class UserDetailActivity : AppCompatActivity() {
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
                                 imgRef.downloadUrl
-                                    .addOnSuccessListener { url ->
-                                         database.reference.child("Users").child(userId).child("bio").setValue(bio)
-                                            .addOnSuccessListener {
+                                    .addOnSuccessListener {
+                                        val childUpdates = HashMap<String, Any>()
+                                        childUpdates["bio"] = bio
+                                        childUpdates["img"] = it.toString()
+                                             database.reference.child("Users").child(userId).updateChildren(childUpdates)
+                                             .addOnSuccessListener {
                                                 progress.dismiss()
+                                                 startActivity(Intent(this@UserDetailActivity,MainActivity::class.java))
                                                 Toast.makeText(
                                                     this@UserDetailActivity,
                                                     "Saved Successfully...",
