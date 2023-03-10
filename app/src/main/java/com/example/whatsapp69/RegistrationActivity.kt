@@ -42,7 +42,7 @@ class RegistrationActivity : AppCompatActivity() {
                             if(task.isSuccessful){
                                 progressDialog.dismiss()
                                 database.reference.child("Users").child(auth.uid.toString()).setValue(
-                                    Users(email,pass,"Null","Null","Null")
+                                    Users(email,pass,"Nothing","Nothing","Nothing")
                                 )
                                 startActivity(Intent(this@RegistrationActivity,UserDetailActivity::class.java))
                                 Toast.makeText(this@RegistrationActivity,"Registration Completed...",Toast.LENGTH_SHORT).show()

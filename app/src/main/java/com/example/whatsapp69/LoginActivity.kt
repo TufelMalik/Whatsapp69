@@ -15,16 +15,14 @@ class LoginActivity : AppCompatActivity() {
     lateinit var binding : ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //tufel
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
 
         var loginProgressDialog = ProgressDialog(this)
         loginProgressDialog.setMessage("Login your account .....")
-        binding.txtGotoRegistration.setOnClickListener {
-            startActivity(Intent(this@LoginActivity,RegistrationActivity::class.java))
-        }
+
         binding.btnLogin.setOnClickListener {
             var email = binding.etEmailLogin.text.toString()
             var pass = binding.etPassLogin.text.toString()
@@ -52,10 +50,8 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity,"Invalid Email or Password !!!", Toast.LENGTH_SHORT).show()
             }
         }
-
-    }
-
-    override fun onBackPressed() {
-        finishAffinity()
+        binding.txtGotoRegistration.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,RegistrationActivity::class.java))
+        }
     }
 }
