@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D5DBDC"
     tools:context=".UserDetailActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,22 +17,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.419">
-
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_set_UserDetail"
             android:layout_width="200dp"
+            android:src="@drawable/select_img_"
             android:layout_height="200dp"
+            app:civ_border_width="3dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="Profile_picture"
-            app:srcCompat="@drawable/select_img_" />
+/>
+
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Profile Image "
             android:textColor="@color/black"
             android:textSize="30sp" />
