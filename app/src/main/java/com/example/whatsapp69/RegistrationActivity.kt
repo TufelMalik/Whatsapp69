@@ -4,14 +4,11 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Choreographer.FrameData
-import android.view.LayoutInflater
 import android.widget.Toast
-import com.example.whatsapp69.DataClasses.Users
+import com.example.whatsapp69.DataClasses.UsersModel
 import com.example.whatsapp69.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var binding : ActivityRegistrationBinding
@@ -42,7 +39,15 @@ class RegistrationActivity : AppCompatActivity() {
                             if(task.isSuccessful){
                                 progressDialog.dismiss()
                                 database.reference.child("Users").child(auth.uid.toString()).setValue(
-                                    Users(email,pass,"Nothing","Nothing","Nothing")
+                                    UsersModel(
+                                        auth.currentUser!!.uid,
+                                        "",
+                                        email,
+                                        pass,
+                                        "Nothing",
+                                        "Nothing",
+                                        "Nothing"
+                                    )
                                 )
                                 startActivity(Intent(this@RegistrationActivity,UserDetailActivity::class.java))
                                 Toast.makeText(this@RegistrationActivity,"Registration Completed...",Toast.LENGTH_SHORT).show()

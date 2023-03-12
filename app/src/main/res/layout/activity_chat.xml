@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/whatsappbgmain"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            >
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/back_button" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_set_UserDetail"
+                android:layout_width="45dp"
+                android:layout_height="60dp"
+                android:layout_margin="9dp"
+                android:tint="@color/white"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_color="@color/white"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_person_24"
+                app:civ_border_width="3dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="User Name"
+                android:layout_margin="7dp"
+                android:layout_marginTop="16dp"
+                android:textSize="23dp"
+                android:textColor="@color/black"
+                />
+
+
+            <ImageButton
+                android:id="@+id/chat_call_btn"
+                android:layout_width="50dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="70dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_add_ic_call_24" />
+
+
+            <ImageButton
+                android:id="@+id/chat_video_call_btn"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_video_call_24" />
+
+
+
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_width="340dp"
+            android:layout_height="47dp"
+            app:cardCornerRadius="30dp"
+            >
+
+            <EditText
+                android:id="@+id/etMessage_chat"
+                android:layout_width="340dp"
+                android:layout_height="70dp"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:hint="Type here..."
+                android:inputType="textPersonName" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/btnSentMSG_chat"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_sent_msg"
+            tools:srcCompat="@drawable/ic_baseline_send_icon" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

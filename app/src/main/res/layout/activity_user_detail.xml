@@ -40,14 +40,21 @@
             android:text="Profile Image "
             android:textColor="@color/black"
             android:textSize="30sp" />
+        <EditText
+            android:id="@+id/etNmae_USerDetailed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Name "
+            android:maxLines="3" />
+
 
         <EditText
             android:id="@+id/etBio_UserDetailed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
-            android:hint="Bio_hint"
+            android:hint="Bio"
             android:maxLines="3" />
 
         <Button

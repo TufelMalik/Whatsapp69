@@ -4,9 +4,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import com.example.whatsapp69.DataClasses.Users
 import com.example.whatsapp69.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 

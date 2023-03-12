@@ -1,16 +1,15 @@
 package com.example.whatsapp69
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.R
 import android.os.Bundle
-import android.text.TextUtils.replace
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
-import com.example.whatsapp69.Fragments.ProfileFragment
-import com.example.whatsapp69.Fragments.SettingFragment
+import android.text.method.MultiTapKeyListener
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.whatsapp69.Adapters.ViewPagerAdapter
+import com.example.whatsapp69.Fragments.*
 import com.example.whatsapp69.databinding.ActivityMainBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.appbar.MaterialToolbar
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -19,9 +18,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //  Setting the ToolBar on MainActivity
+
+        setSupportActionBar(binding.mainToolBar)
+
+        val fragmentArrayList = ArrayList<Fragment>()
+        fragmentArrayList.add(ChatFragment())
+        fragmentArrayList.add(StatusFragment())
+        fragmentArrayList.add(CallFragment())
+        val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager,fragmentArrayList)
+        binding.viewPager.adapter = viewPagerAdapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
+
+
 
 
     }
-
-
 }

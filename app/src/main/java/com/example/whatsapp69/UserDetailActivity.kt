@@ -53,6 +53,7 @@ class UserDetailActivity : AppCompatActivity() {
                                 imgRef.downloadUrl
                                     .addOnSuccessListener {
                                         val childUpdates = HashMap<String, Any>()
+                                        childUpdates["name"] = binding.etNmaeUSerDetailed.text.toString()
                                         childUpdates["bio"] = bio
                                         childUpdates["img"] = it.toString()
                                              database.reference.child("Users").child(userId).updateChildren(childUpdates)
