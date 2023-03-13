@@ -2,6 +2,7 @@ package com.example.whatsapp69.Adapters
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.example.whatsapp69.DataClasses.UsersModel
 import com.example.whatsapp69.Fragments.ChatFragment
 import com.example.whatsapp69.R
 import com.example.whatsapp69.databinding.ChatUserItemLayoutBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
 
@@ -31,7 +33,6 @@ class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): Rec
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         var user = userList[position]
-
         Glide.with(context).load(user.img).into(holder.binding.imgSetUserItemLayout)
         holder.binding.chatUserUserNameLayout.text = user.name
 
@@ -42,6 +43,7 @@ class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): Rec
                     intent.putExtra("uid", user.userId)
                     context.startActivity(intent)
                 }
+
         }
 //        If upper Code not working than try this code .......
 //

@@ -1,8 +1,10 @@
 package com.example.whatsapp69
 
-import android.R
+import com.example.whatsapp69.R
 import android.os.Bundle
 import android.text.method.MultiTapKeyListener
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.whatsapp69.Adapters.ViewPagerAdapter
@@ -18,9 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //  Setting the ToolBar on MainActivity
 
-        setSupportActionBar(binding.mainToolBar)
 
         val fragmentArrayList = ArrayList<Fragment>()
         fragmentArrayList.add(ChatFragment())
@@ -34,4 +34,13 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        } else
+            finishAffinity()
+    }
 }
+

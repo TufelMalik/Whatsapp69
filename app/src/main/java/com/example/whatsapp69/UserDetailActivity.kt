@@ -54,6 +54,7 @@ class UserDetailActivity : AppCompatActivity() {
                                     .addOnSuccessListener {
                                         val childUpdates = HashMap<String, Any>()
                                         childUpdates["name"] = binding.etNmaeUSerDetailed.text.toString()
+
                                         childUpdates["bio"] = bio
                                         childUpdates["img"] = it.toString()
                                              database.reference.child("Users").child(userId).updateChildren(childUpdates)

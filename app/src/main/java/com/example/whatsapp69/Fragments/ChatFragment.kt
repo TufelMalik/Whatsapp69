@@ -1,15 +1,18 @@
 package com.example.whatsapp69.Fragments
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whatsapp69.Adapters.ChatAdapter
+import com.example.whatsapp69.ChatActivity
 import com.example.whatsapp69.DataClasses.UsersModel
 import com.example.whatsapp69.databinding.FragmentChatBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -38,13 +41,17 @@ class ChatFragment : Fragment() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userList = mutableListOf<UsersModel>()
-                for (userSnapshot in snapshot.children) {
-                    val user = userSnapshot.getValue(UsersModel::class.java)
-                    if (user != null) {
-                        userList.add(user)
+                if (auth.uid != snapshot.key) {
+                    for (userSnapshot in snapshot.children) {
+                        val user = userSnapshot.getValue(UsersModel::class.java)
+                        if (auth.uid != user!!.userId) {
+                            user!!.userId = userSnapshot.key
+
+                            userList.add(user)
+                        }
                     }
+                    binding.userListRecyclerView.adapter = ChatAdapter(this@ChatFragment, userList)
                 }
-                binding.userListRecyclerView.adapter = ChatAdapter(this@ChatFragment,userList)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -52,9 +59,14 @@ class ChatFragment : Fragment() {
                 Log.e(TAG, "Error retrieving user data", error.toException())
             }
         })
+
+
+
         val adapter = ChatAdapter(this@ChatFragment, userList)
         binding.userListRecyclerView.setAdapter(adapter)
 
         return binding.root
     }
+
+
 }

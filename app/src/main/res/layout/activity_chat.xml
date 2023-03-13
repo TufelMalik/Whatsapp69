@@ -19,50 +19,56 @@
             >
 
             <ImageButton
+                android:id="@+id/backButtonChatActivity"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:src="@drawable/back_button" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_set_UserDetail"
+                android:id="@+id/userImg_ChatActivity"
                 android:layout_width="45dp"
                 android:layout_height="60dp"
                 android:layout_margin="9dp"
                 android:tint="@color/white"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 app:civ_border_color="@color/white"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_baseline_person_24"
                 app:civ_border_width="3dp" />
             <TextView
+                android:id="@+id/userName_ChatActiviy"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:maxLength="10"
+                android:layout_gravity="center_vertical"
                 android:text="User Name"
                 android:layout_margin="7dp"
-                android:layout_marginTop="16dp"
                 android:textSize="23dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
 
-            <ImageButton
-                android:id="@+id/chat_call_btn"
-                android:layout_width="50dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="70dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_add_ic_call_24" />
+                <ImageButton
+                    android:id="@+id/chat_call_btn"
+                    android:layout_width="50dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_height="65dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_add_ic_call_24" />
 
-
-            <ImageButton
-                android:id="@+id/chat_video_call_btn"
-                android:layout_width="50dp"
-                android:layout_height="60dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_video_call_24" />
-
-
+                <ImageButton
+                    android:id="@+id/chat_video_call_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_video_call_24" />
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -91,6 +97,7 @@
                 android:layout_width="340dp"
                 android:layout_height="70dp"
                 android:ems="10"
+                android:layout_marginLeft="9dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:hint="Type here..."

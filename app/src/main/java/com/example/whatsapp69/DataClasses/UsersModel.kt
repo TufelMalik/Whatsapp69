@@ -11,4 +11,8 @@ data class UsersModel(
     )
 {
     constructor() :this(null, "", "", "", "", "", "")
+    constructor(email: String?,pass: String?) : this(){
+        this.email = email
+        this.pass = pass
+    }
 }

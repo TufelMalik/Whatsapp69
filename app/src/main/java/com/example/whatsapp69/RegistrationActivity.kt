@@ -40,13 +40,7 @@ class RegistrationActivity : AppCompatActivity() {
                                 progressDialog.dismiss()
                                 database.reference.child("Users").child(auth.uid.toString()).setValue(
                                     UsersModel(
-                                        auth.currentUser!!.uid,
-                                        "",
-                                        email,
-                                        pass,
-                                        "Nothing",
-                                        "Nothing",
-                                        "Nothing"
+                                       email,pass
                                     )
                                 )
                                 startActivity(Intent(this@RegistrationActivity,UserDetailActivity::class.java))
