@@ -40,8 +40,8 @@ class UserDetailActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         var progress = ProgressDialog(this)
         progress.setMessage("Uploading Pleas wait....")
-        try {
-            binding.btnSubmiteUserDetails.setOnClickListener {
+
+        binding.btnSubmiteUserDetails.setOnClickListener {
                 var bio = binding.etBioUserDetailed.text.toString()
                 if (bio.isNotEmpty()) {
                     progress.show()
@@ -78,10 +78,9 @@ class UserDetailActivity : AppCompatActivity() {
 
 
             }
-        }catch (e: java.lang.Exception){
-            Toast.makeText(this@UserDetailActivity,"Eroor is : $e",Toast.LENGTH_LONG).show()
-        }
+
         binding.imgSetUserDetail.setOnClickListener {
+
             var intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
             intent.type = "image/*"

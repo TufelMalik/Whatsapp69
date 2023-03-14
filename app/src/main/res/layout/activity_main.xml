@@ -26,23 +26,21 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            app:tabTextColor="@color/black"
-            app:tabIndicator="@color/white"
-            app:tabSelectedTextColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-
-
+            android:contentDescription="@string/app_name"
+            app:tabIndicator="@color/purple_700"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_marginTop="107dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="107dp"
+        android:contentDescription="@string/app_name" />
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

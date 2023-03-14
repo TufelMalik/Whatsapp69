@@ -1,14 +1,13 @@
 package com.example.whatsapp69
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
-import android.os.UserManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.whatsapp69.Adapters.MessageAdapter
 import com.example.whatsapp69.DataClasses.MessageModel
 import com.example.whatsapp69.DataClasses.UsersModel
 import com.example.whatsapp69.databinding.ActivityChatBinding
@@ -18,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ChatActivity : AppCompatActivity() {
     lateinit var binding : ActivityChatBinding
@@ -27,10 +27,13 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var senderRoom : String
     private lateinit var receiverRoom: String
 
+    private lateinit var list : ArrayList<MessageModel>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         supportActionBar?.hide()
         database = FirebaseDatabase.getInstance()
@@ -38,20 +41,43 @@ class ChatActivity : AppCompatActivity() {
         receiverUid = intent.getStringExtra("uid")!!
         senderRoom = senderUid + receiverUid
         receiverRoom = receiverUid + senderUid
-        var userID = intent.getStringExtra("uid").toString()
+        val userID = intent.getStringExtra("uid").toString()
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.chatRecyclerView.setLayoutManager(layoutManager)
+        list = ArrayList()
+
+        database.reference.child("Chats").child(senderRoom).child("Message")
+            .addValueEventListener(object  : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    list.clear()
+                    for(snapshot1 in snapshot.children ){
+                        val data = snapshot1.getValue(MessageModel::class.java)
+                        list.add(data!!)
+
+                    }
+                    binding.chatRecyclerView.adapter = MessageAdapter(this@ChatActivity, list)
+                    binding.chatRecyclerView.adapter?.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
 
 
         binding.backButtonChatActivity.setOnClickListener {
             onBackPressed()
         }
 
+        list = ArrayList()
         database.reference.child("Users").child(userID)
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var user = snapshot.getValue(UsersModel::class.java)
                     val name = user!!.name!!
-                    if (name.length >= 11) {
-                        binding.userNameChatActiviy.text = name.substring(0,10) + "..."
+                    if (name.length >= 10) {
+                        binding.userNameChatActiviy.text = name.substring(0,7) + "..."
                     } else {
                         binding.userNameChatActiviy.text = name
                     }
@@ -73,16 +99,13 @@ class ChatActivity : AppCompatActivity() {
 
                 val randomKey = database.reference.push().key
                 database.reference.child("Chats")
-                    .child(senderRoom).child("Messages").child(randomKey!!).setValue(message)
+                    .child(senderRoom).child("Message").child(randomKey!!).setValue(message)
                     .addOnSuccessListener {
-
-
-                        database.reference.child("Chats").child(receiverRoom).child("Messages").child(randomKey!!).setValue(message)
+                        database.reference.child("Chats").child(receiverRoom).child("Message").child(randomKey!!).setValue(message)
                             .addOnSuccessListener {
                                 binding.etMessageChat.text = null
                                 Toast.makeText(this@ChatActivity,"Message Sent.",Toast.LENGTH_SHORT).show()
                             }
-
                     }
 
             }else{

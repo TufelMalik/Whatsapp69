@@ -26,6 +26,7 @@ class ChatFragment : Fragment() {
     lateinit var database : FirebaseDatabase
     lateinit var auth : FirebaseAuth
     var userList = ArrayList<UsersModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +45,7 @@ class ChatFragment : Fragment() {
                 if (auth.uid != snapshot.key) {
                     for (userSnapshot in snapshot.children) {
                         val user = userSnapshot.getValue(UsersModel::class.java)
-                        if (auth.uid != user!!.userId) {
+                        if (user?.userId != FirebaseAuth.getInstance().currentUser?.uid) {
                             user!!.userId = userSnapshot.key
                             userList.add(user)
                         }

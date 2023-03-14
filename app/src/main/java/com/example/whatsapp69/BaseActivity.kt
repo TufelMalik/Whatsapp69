@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.whatsapp69.Fragments.ProfileFragment
-import com.example.whatsapp69.Fragments.SettingFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class BaseActivity : AppCompatActivity() {
@@ -21,14 +20,6 @@ class BaseActivity : AppCompatActivity() {
                 val profileFragement  = ProfileFragment()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.main_container, profileFragement)
-                    .addToBackStack(null)
-                    .commit()
-                return true
-            }
-            R.id.setting_menu->{
-                val settingFragment = SettingFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container,settingFragment)
                     .addToBackStack(null)
                     .commit()
                 return true
