@@ -46,7 +46,6 @@ class ChatFragment : Fragment() {
                         val user = userSnapshot.getValue(UsersModel::class.java)
                         if (auth.uid != user!!.userId) {
                             user!!.userId = userSnapshot.key
-
                             userList.add(user)
                         }
                     }

@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/whatsappbgmain"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/chatbg1">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            >
+            android:layout_height="70dp">
 
             <ImageButton
                 android:id="@+id/backButtonChatActivity"
@@ -24,41 +25,41 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:src="@drawable/back_button" />
+                android:src="@drawable/back_button"
+                android:tint="@color/white" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userImg_ChatActivity"
                 android:layout_width="45dp"
                 android:layout_height="60dp"
-                android:layout_margin="9dp"
-                android:tint="@color/white"
                 android:layout_gravity="center_vertical"
-                app:civ_border_color="@color/white"
+                android:layout_margin="9dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_baseline_person_24"
+                android:tint="@color/white"
+                app:civ_border_color="@color/white"
                 app:civ_border_width="3dp" />
+
             <TextView
                 android:id="@+id/userName_ChatActiviy"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:maxLength="10"
                 android:layout_gravity="center_vertical"
-                android:text="User Name"
                 android:layout_margin="7dp"
-                android:textSize="23dp"
+                android:maxLength="21"
+                android:text="User Name"
                 android:textColor="@color/white"
-                />
+                android:textSize="23dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <ImageButton
                     android:id="@+id/chat_call_btn"
                     android:layout_width="50dp"
-                    android:layout_marginLeft="60dp"
                     android:layout_height="65dp"
+                    android:layout_marginLeft="60dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_baseline_add_ic_call_24" />
 
@@ -75,7 +76,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="598dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.5" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,34 +98,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="10dp"
-            android:layout_width="340dp"
+            android:layout_width="320dp"
             android:layout_height="47dp"
-            app:cardCornerRadius="30dp"
-            >
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="30dp">
 
             <EditText
                 android:id="@+id/etMessage_chat"
-                android:layout_width="340dp"
+                android:layout_width="320dp"
                 android:layout_height="70dp"
-                android:ems="10"
-                android:layout_marginLeft="9dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10sp"
                 android:hint="Type here..."
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp" />
         </androidx.cardview.widget.CardView>
 
         <ImageButton
             android:id="@+id/btnSentMSG_chat"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="4dp"
-            android:layout_gravity="center"
             android:background="@drawable/circle_sent_msg"
-            tools:srcCompat="@drawable/ic_baseline_send_icon" />
+            android:src="@drawable/ic_baseline_send_icon" />
 
     </LinearLayout>
 

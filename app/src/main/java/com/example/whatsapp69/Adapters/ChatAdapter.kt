@@ -35,7 +35,6 @@ class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): Rec
         var user = userList[position]
         Glide.with(context).load(user.img).into(holder.binding.imgSetUserItemLayout)
         holder.binding.chatUserUserNameLayout.text = user.name
-
         holder.itemView.setOnClickListener {
                 val context = holder.itemView.context
                 if (context != null) {

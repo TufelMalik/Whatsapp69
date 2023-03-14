@@ -49,8 +49,11 @@ class ChatActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var user = snapshot.getValue(UsersModel::class.java)
-                    if(user!!.name!!.length <= 12){
-                        binding.userNameChatActiviy.text = user!!.name!!.substring(0,10)
+                    val name = user!!.name!!
+                    if (name.length >= 11) {
+                        binding.userNameChatActiviy.text = name.substring(0,10) + "..."
+                    } else {
+                        binding.userNameChatActiviy.text = name
                     }
 
                     Glide.with(this@ChatActivity).load(user.img).into(binding.userImgChatActivity)
@@ -61,8 +64,6 @@ class ChatActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-
-
 
 
 
