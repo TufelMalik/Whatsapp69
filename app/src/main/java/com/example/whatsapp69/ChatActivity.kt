@@ -57,12 +57,13 @@ class ChatActivity : AppCompatActivity() {
 
                     }
                     binding.chatRecyclerView.adapter = MessageAdapter(this@ChatActivity, list)
-                    binding.chatRecyclerView.adapter?.notifyDataSetChanged()
+
                 }
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
             })
+        binding.chatRecyclerView.adapter?.notifyDataSetChanged()
 
 
 
@@ -113,27 +114,7 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
-    }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.profile_menu -> {
-               Toast.makeText(this@ChatActivity ,"Profile",Toast.LENGTH_SHORT).show()
-                return true
-            }
-            R.id.setting_menu -> {
-                // Handle logout click
-                return true
-            }
-            R.id.logOut_menu -> {
-                // Handle logout click
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
+
     }
 
 }

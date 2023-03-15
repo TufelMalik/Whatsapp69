@@ -14,6 +14,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,22 +35,13 @@ class StatusFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         binding = FragmentStatusBinding.inflate(layoutInflater)
 
-        database.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var userList = mutableListOf<UsersModel>()
-                for(snapshot1 in snapshot.children){
-                    val user = snapshot1.getValue(UsersModel::class.java)
-                    Glide.with(this@StatusFragment).load(user!!.img).into(binding.userStstusImageStatusFragment)
-                }
+       var userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        var storageRef = FirebaseStorage.getInstance().reference.child("Users").child(userId)
+        storageRef.downloadUrl.addOnSuccessListener {
+            val imgUrl = it.toString()
+            Glide.with(this@StatusFragment).load(imgUrl).into(binding.userStstusImageStatusFragment)
+        }
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-
-        })
 
         return  binding.root
         return inflater.inflate(R.layout.fragment_status, container, false)
