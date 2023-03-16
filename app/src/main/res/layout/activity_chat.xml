@@ -40,10 +40,12 @@
 
             <TextView
                 android:id="@+id/userName_ChatActiviy"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="7dp"
+                android:maxWidth="140dp"
+                android:maxHeight="30dp"
                 android:text="User Name"
                 android:textColor="@color/white"
                 android:textSize="19dp" />
@@ -52,11 +54,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
+
                 <ImageButton
                     android:id="@+id/chat_call_btn"
                     android:layout_width="50dp"
                     android:layout_height="65dp"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="50dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_baseline_add_ic_call_24" />
 
@@ -75,7 +78,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="670dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -91,8 +94,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -104,6 +108,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="310dp"
             android:layout_height="47dp"
+            android:background="@android:color/transparent"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
             app:cardCornerRadius="30dp">

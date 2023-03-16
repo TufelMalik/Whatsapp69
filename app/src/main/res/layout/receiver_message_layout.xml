@@ -8,9 +8,10 @@
     <TextView
         android:id="@+id/txtReceive_messgae"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:layout_marginTop="4dp"
+        android:maxWidth="299dp"
         android:background="@drawable/reciver_message_drawable"
         android:gravity="center_vertical"
         android:padding="9dp"

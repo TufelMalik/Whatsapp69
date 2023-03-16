@@ -51,11 +51,12 @@ class ChatActivity : AppCompatActivity() {
             .addValueEventListener(object  : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     list.clear()
+
                     for(snapshot1 in snapshot.children ){
                         val data = snapshot1.getValue(MessageModel::class.java)
                         list.add(data!!)
-
                     }
+
                     binding.chatRecyclerView.adapter = MessageAdapter(this@ChatActivity, list)
 
                 }
@@ -63,7 +64,7 @@ class ChatActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-        binding.chatRecyclerView.adapter?.notifyDataSetChanged()
+
 
 
 
@@ -77,8 +78,8 @@ class ChatActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var user = snapshot.getValue(UsersModel::class.java)
                     val name = user!!.name!!
-                    if (name.length >= 10) {
-                        binding.userNameChatActiviy.text = name.substring(0,7) + "..."
+                    if (name.length >= 14) {
+                        binding.userNameChatActiviy.text = name.substring(0,11) + "..."
                     } else {
                         binding.userNameChatActiviy.text = name
                     }
@@ -106,6 +107,7 @@ class ChatActivity : AppCompatActivity() {
                             .addOnSuccessListener {
                                 binding.etMessageChat.text = null
                                 Toast.makeText(this@ChatActivity,"Message Sent.",Toast.LENGTH_SHORT).show()
+                                binding.chatRecyclerView.adapter?.notifyDataSetChanged()
                             }
                     }
 

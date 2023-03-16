@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#3A5DC6</color>
-    <color name="purple_500">#0975F8</color>
-    <color name="purple_700">#3A5DC6</color>
+    <color name="purple_500">#0975F8</color>// Primary Color
+    <color name="purple_700">#0975F8</color> // StstusBar Color
     <color name="teal_200">#3A5DC6</color>
     <color name="teal_700">#0969F8</color>
     <color name="black">#FF000000</color>

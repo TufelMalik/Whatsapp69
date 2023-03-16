@@ -30,10 +30,6 @@ class MainActivity : AppCompatActivity() {
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager,fragmentArrayList)
         binding.viewPager.adapter = viewPagerAdapter
         binding.tabs.setupWithViewPager(binding.viewPager)
-
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

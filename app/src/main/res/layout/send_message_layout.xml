@@ -8,10 +8,11 @@
     <TextView
         android:id="@+id/txtSent_message"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/send_message_drawable"
         android:layout_margin="15dp"
         android:textSize="23dp"
+        android:maxWidth="299dp"
         android:padding="9dp"
         android:gravity="center_vertical"
         android:layout_marginTop="108dp"

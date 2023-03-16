@@ -1,6 +1,8 @@
 package com.example.whatsapp69.Fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class StatusFragment : Fragment() {
     private lateinit var binding : FragmentStatusBinding
     private lateinit var auth : FirebaseAuth
@@ -35,18 +32,31 @@ class StatusFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         binding = FragmentStatusBinding.inflate(layoutInflater)
 
-       var userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
-        var storageRef = FirebaseStorage.getInstance().reference.child("Users").child(userId)
-        storageRef.downloadUrl.addOnSuccessListener {
-            val imgUrl = it.toString()
-            Glide.with(this@StatusFragment).load(imgUrl).into(binding.userStstusImageStatusFragment)
+       val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        val storageRef = FirebaseStorage.getInstance().reference.child("Users").child(userId)
+
+        //  Getting User Data ...
+        database.child(userId).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(UsersModel::class.java)
+                Glide.with(this@StatusFragment).load(user?.img).into(binding.userStstusImageStatusFragment)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        binding.statusLayout.setOnClickListener {
+            val videoIntent = Intent(Intent.ACTION_PICK,MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(videoIntent,1)
         }
 
 
         return  binding.root
         return inflater.inflate(R.layout.fragment_status, container, false)
     }
-
-
 
 }
