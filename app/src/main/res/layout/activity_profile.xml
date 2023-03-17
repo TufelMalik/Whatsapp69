@@ -55,7 +55,8 @@
             <LinearLayout
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="460dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="50dp"
                 android:background="@drawable/upper_corner_drawable"
                 android:orientation="vertical">
 
@@ -70,33 +71,21 @@
                     android:textColor="@color/black"
                     android:textSize="24dp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/etUSerName_Profile"
-                        android:layout_width="300dp"
+                        android:id="@+id/txtUSerName_Profile"
+                        android:layout_width="340dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_baseline_person_24"
                         android:drawablePadding="20dp"
+                        android:drawableRight="@drawable/edit_btn2"
                         android:drawableTint="@color/black"
                         android:paddingRight="20dp"
                         android:text="User Name"
                         android:textColor="@color/black"
                         android:textSize="26dp" />
 
-                    <ImageButton
-                        android:id="@+id/name_Edit_Button_profile"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/edit_btn2"
-                        android:padding="10dp" />
-
-
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/txt43"
@@ -116,27 +105,59 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/etUserBio_Profile"
-                        android:layout_width="304dp"
+                        android:id="@+id/txtUserBio_Profile"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="80dp"
                         android:drawableLeft="@drawable/bio_img"
                         android:drawablePadding="20dp"
+                        android:drawableRight="@drawable/edit_btn2"
                         android:drawableTint="@color/black"
-                        android:maxLines="3"
+                        android:maxLines="2"
                         android:paddingRight="20dp"
                         android:text="Bio"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         android:textSize="26dp" />
 
-                    <ImageButton
-                        android:id="@+id/bio_Edit_Button_profile"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/edit_btn2"
-                        android:padding="10dp" />
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/cf"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:paddingRight="20dp"
+                    android:text="Email Address : "
+                    android:textColor="@color/black"
+                    android:textSize="24dp" />
+
+
+                <TextView
+                    android:id="@+id/txtUserEmail_Profile"
+                    android:layout_width="340dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="20dp"
+                    android:drawableRight="@drawable/edit_btn2"
+                    android:drawableTint="@color/black"
+                    android:paddingRight="20dp"
+                    android:text="User Name"
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+
+
+                <TextView
+                    android:id="@+id/txtEdit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="30dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="31dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="Edit Profile" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="290dp"
@@ -157,6 +178,7 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

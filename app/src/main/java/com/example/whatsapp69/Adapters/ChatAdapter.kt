@@ -1,27 +1,21 @@
 package com.example.whatsapp69.Adapters
 
+import android.app.Dialog
 import android.content.Intent
-import android.media.ImageWriter.newInstance
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.whatsapp69.ChatActivity
 import com.example.whatsapp69.DataClasses.UsersModel
-import com.example.whatsapp69.Fragments.CallFragment.Companion.newInstance
 import com.example.whatsapp69.Fragments.ChatFragment
-import com.example.whatsapp69.Fragments.ShowClickedImageFragment
 import com.example.whatsapp69.R
 import com.example.whatsapp69.databinding.ChatUserItemLayoutBinding
-import com.google.android.material.datepicker.MaterialCalendar.newInstance
-import com.google.firebase.auth.FirebaseAuth
-import javax.xml.datatype.DatatypeFactory.newInstance
-import javax.xml.validation.SchemaFactory.newInstance
 
-class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
+class ChatAdapter(var context: ChatFragment,private  var userList: List<UsersModel>): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
 
     class ChatViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         var binding : ChatUserItemLayoutBinding= ChatUserItemLayoutBinding.bind(view)
@@ -35,16 +29,18 @@ class ChatAdapter(var context: ChatFragment,var userList: List<UsersModel>): Rec
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        var user = userList[position]
+        val user = userList[position]
         Glide.with(context).load(user.img).into(holder.binding.imgSetUserItemLayout)
         holder.binding.chatUserUserNameLayout.text = user.name
 
         holder.userImg.setOnClickListener {
-            val showClickedImageFragment = ShowClickedImageFragment()
-            val fragmentManager =(holder.itemView.context as AppCompatActivity).supportFragmentManager
-            fragmentManager.beginTransaction().replace(R.id.main_container,showClickedImageFragment)
-                .addToBackStack(null)
-                .commit()
+            val dialog = Dialog(it.context)
+            dialog.setContentView(R.layout.show_user_click_image)
+            val userImgDialog : ImageView = dialog.findViewById(R.id.userIMG_Dialog)
+            val userNameDialog : TextView = dialog.findViewById(R.id.userName_Dialog)
+            dialog.show()
+            Glide.with(context).load(user.img).into(userImgDialog)
+            userNameDialog.text = user.name
 
         }
         holder.itemView.setOnClickListener {

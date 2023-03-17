@@ -31,6 +31,10 @@ class ChatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        fun ShowImg(){
+
+        }
         auth = FirebaseAuth.getInstance()
         binding = FragmentChatBinding.inflate(layoutInflater)
         val database = FirebaseDatabase.getInstance().reference.child("Users")

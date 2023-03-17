@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B2302B2B"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+        <TextView
+            android:id="@+id/txtTitle_Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:text="Add Your Name :"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/etName_Dialog"
+            android:layout_width="230dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="start"
+            android:layout_height="40dp"
+            android:hint="Name" />
+
+        <TextView
+            android:id="@+id/hk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Add Your Bio :"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+
+            <EditText
+                android:id="@+id/etBio_Dialog"
+                android:layout_width="230dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_height="40dp"
+                android:hint="Bio" />
+
+            <Button
+                android:id="@+id/btnSave_Dialog"
+                android:layout_width="90dp"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:layout_gravity="center_horizontal"
+                tools:layout_editor_absoluteX="321dp"
+                tools:layout_editor_absoluteY="231dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
