@@ -41,8 +41,8 @@ class ChatAdapter(var context: ChatFragment,private  var userList: List<UsersMod
             dialog.show()
             Glide.with(context).load(user.img).into(userImgDialog)
             userNameDialog.text = user.name
-
         }
+
         holder.itemView.setOnClickListener {
                 val context = holder.itemView.context
                 if (context != null) {

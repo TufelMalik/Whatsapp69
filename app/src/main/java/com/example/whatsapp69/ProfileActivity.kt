@@ -2,7 +2,6 @@ package com.example.whatsapp69
 
 import android.app.Dialog
 import android.app.ProgressDialog
-import android.app.WallpaperManager
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.whatsapp69.DataClasses.UsersModel
@@ -37,8 +35,8 @@ class ProfileActivity : AppCompatActivity()
         supportActionBar?.setTitle("Profile")
         val dialog =Dialog(this@ProfileActivity)
         dialog.setContentView(R.layout.edit_profile_dialog)
-        var etName : EditText = dialog.findViewById(R.id.etName_Dialog)
-        var etBio : EditText = dialog.findViewById(R.id.etBio_Dialog)
+        val etName : EditText = dialog.findViewById(R.id.etName_Dialog)
+        val etBio : EditText = dialog.findViewById(R.id.etBio_Dialog)
 
         val progress = ProgressDialog(this@ProfileActivity)
         progress.setMessage("Updating Your Profile...")
@@ -74,7 +72,7 @@ class ProfileActivity : AppCompatActivity()
                 binding.txtUserBioProfile.text = user?.bio.toString()
                 binding.txtUserEmailProfile.text = user?.email.toString()
 
-                imgUri = Uri.parse(user!!.img)
+                oldImgUri = Uri.parse(user!!.img)
                 Glide.with(this@ProfileActivity).load(user?.img).into(binding.userIMGProfile)
 
             }
@@ -95,8 +93,7 @@ class ProfileActivity : AppCompatActivity()
 
         binding.btnSaveProfile.setOnClickListener {
             progress.show()
-            if(imgUri.equals(null)) {
-                imgUri = oldImgUri
+            imgUri = oldImgUri
                 imgRef.putFile(imgUri).addOnCompleteListener {
                     imgRef.downloadUrl.addOnSuccessListener {
                         val updatedUserData = HashMap<String, Any>()
@@ -116,14 +113,10 @@ class ProfileActivity : AppCompatActivity()
                                 Toast.makeText(this, "Getting Error...", Toast.LENGTH_SHORT).show()
                             }
                     }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "No Data Updated !", Toast.LENGTH_SHORT).show()
-                        }
                 }
                     .addOnFailureListener {
-                        Toast.makeText(this, "No Data Updated !", Toast.LENGTH_SHORT).show()
+                     imgRef.putFile(oldImgUri)
                     }
-            }
         }
     }
 
@@ -132,7 +125,12 @@ class ProfileActivity : AppCompatActivity()
             if(data.data != null){
                 imgUri = data.data!!
                 binding.userIMGProfile.setImageURI(imgUri)
+            }else{
+                imgUri = oldImgUri
+
             }
+        }else{
+            imgUri = oldImgUri
         }
         super.onActivityResult(requestCode, resultCode, data)
 

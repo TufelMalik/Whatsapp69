@@ -23,8 +23,6 @@ import com.google.firebase.database.ValueEventListener
 
 class ChatFragment : Fragment() {
     lateinit var binding : FragmentChatBinding
-    lateinit var database : FirebaseDatabase
-    lateinit var auth : FirebaseAuth
     var userList = ArrayList<UsersModel>()
 
     override fun onCreateView(
@@ -32,10 +30,8 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        fun ShowImg(){
 
-        }
-        auth = FirebaseAuth.getInstance()
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid.toString()
         binding = FragmentChatBinding.inflate(layoutInflater)
         val database = FirebaseDatabase.getInstance().reference.child("Users")
 
@@ -44,10 +40,10 @@ class ChatFragment : Fragment() {
 
 
         database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var userList = mutableListOf<UsersModel>()
-                if (auth.uid != snapshot.key) {
-                    for (userSnapshot in snapshot.children) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        if (currentUserId != userSnapshot.key) {
                         val user = userSnapshot.getValue(UsersModel::class.java)
                         if (user?.userId != FirebaseAuth.getInstance().currentUser?.uid) {
                             user!!.userId = userSnapshot.key
