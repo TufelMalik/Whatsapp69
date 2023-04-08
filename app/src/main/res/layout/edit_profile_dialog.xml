@@ -33,6 +33,7 @@
         <EditText
             android:id="@+id/etName_Dialog"
             android:layout_width="230dp"
+            android:focusedByDefault="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_gravity="start"

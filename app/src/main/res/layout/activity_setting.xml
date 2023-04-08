@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/upper_corner_drawable"
     tools:context=".SettingActivity">
 
     <LinearLayout
@@ -12,21 +11,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintVertical_bias="0.009">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:text="ABOUT"
             android:textColor="@color/black"
             android:textSize="55dp"
-            android:layout_marginBottom="40dp"
             android:textStyle="bold" />
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/upper_corner_drawable"
+    android:layout_height="1100dp"
+    android:orientation="vertical"
+    >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,8 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="      Tufel Malik"
                 android:textColor="@color/black"
-                android:textSize="22dp"
-                />
+                android:textSize="22dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,15 +65,14 @@
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="@drawable/insta_logo2"
-              />
+                android:background="@drawable/insta_logo2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="         @malik_tufel_official"
                 android:textColor="@color/black"
-                android:layout_gravity="center_vertical"
                 android:textSize="22dp" />
         </LinearLayout>
 
@@ -75,19 +80,17 @@
         <LinearLayout
             android:id="@+id/telegram_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="109dp"
-                android:layout_height="60dp"
-                android:background="@drawable/te"
-                />
+                android:layout_height="75dp"
+                android:background="@drawable/te" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="       @malik tufel official"
                 android:textColor="@color/black"
                 android:textSize="22dp" />
@@ -100,18 +103,20 @@
             android:layout_margin="20dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/img"
-                />
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/img" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="          Tufel Rashid Malik"
                 android:textColor="@color/black"
                 android:textSize="22dp" />
         </LinearLayout>
+
+</LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

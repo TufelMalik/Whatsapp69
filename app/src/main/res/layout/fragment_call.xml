@@ -7,6 +7,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
+        android:id="@+id/callImg"
         android:background="@drawable/null_call_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
