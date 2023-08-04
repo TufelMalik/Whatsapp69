@@ -67,7 +67,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    //      Exoplayer Dependency
+    //Exoplayer Dependency this is video player dep...
     implementation 'com.google.android.exoplayer:exoplayer-core:2.18.5'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.5'
 
